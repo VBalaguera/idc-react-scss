@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.layout {
+  display: flex;
+  flex-direction: row;
+
+  @include medium {
+    flex-direction: column;
+  }
+}
