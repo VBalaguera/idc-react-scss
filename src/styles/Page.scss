@@ -21,7 +21,6 @@
 
   .page_top {
     background-color: red;
-    padding: 1rem;
 
     .page_top_title {
       padding: 1rem;
@@ -57,8 +56,6 @@
     display: flex;
     flex-direction: column;
 
-    padding: 1rem;
-
     @include medium {
     }
 
@@ -66,6 +63,18 @@
       width: 100%;
       height: 800px;
       background-color: red;
+
+      display: flex;
+      flex-wrap: wrap;
+
+      justify-content: space-between;
+      .page_bottom_items_container_item {
+        // aka card
+        width: 300px;
+        height: 200px;
+        border: 1px solid black;
+        margin: 1rem;
+      }
     }
 
     .page_bottom_pagination {
