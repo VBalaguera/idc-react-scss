@@ -12,11 +12,16 @@ import {
 } from 'react-router-dom'
 
 import IndexPage from './components/Pages/IndexPage'
+import DetailPage from './components/Pages/DetailPage'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <IndexPage />,
+  },
+  {
+    path: '/detail',
+    element: <DetailPage />,
   },
 ])
 createRoot(document.getElementById('root')).render(
