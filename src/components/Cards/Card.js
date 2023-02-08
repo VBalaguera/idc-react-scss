@@ -1,18 +1,18 @@
 import React from 'react'
 
-import TESTIMAGE from '../../assets/images/planets/alderaan.jpg'
-
 import TESTICON from '../../assets/icons/death_star.svg'
 
-const Card = () => {
+const Card = ({ item, imgsrc }) => {
+  console.log('item', item)
+
   return (
     <div className='card_item'>
       <div className='card_item_top'>
-        <img className='card_item_top_img' src={TESTIMAGE} alt='test' />
+        <img className='card_item_top_img' src={imgsrc} alt={item.name} />
       </div>
       <div className='card_item_bottom'>
         <div className='card_item_bottom_title'>
-          <span>PLANET NAME</span>
+          <span>{item.name}</span>
         </div>
         <div className='card_item_bottom_description'>
           <span>Description</span>

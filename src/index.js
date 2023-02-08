@@ -22,6 +22,10 @@ const router = createBrowserRouter([
     element: <IndexPage title='Planets' />,
   },
   {
+    path: '/planets/:id',
+    element: <DetailPage />,
+  },
+  {
     path: '/people',
     element: <PeoplePage title='people' />,
   },

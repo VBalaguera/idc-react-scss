@@ -2,7 +2,7 @@
 
 import Layout from '../../Layout/Layout'
 
-import Card from '../../Card/Card'
+import StarshipsCard from '../../Cards/StarshipsCard/StarshipsCard'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 
@@ -62,14 +62,7 @@ const StarshipPage = ({ title }) => {
         <div className='page_bottom'>
           {/* display page's api results */}
           <div className='page_bottom_items_container'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {/* StarshipsCard */}
           </div>
           <div className='page_bottom_pagination'>
             <div className='page_bottom_pagination_options'>

@@ -1,19 +1,66 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import Layout from '../Layout/Layout'
 
-import TESTIMAGE from '../../assets/images/planets/alderaan.jpg'
+import TESTIMAGE from '../../assets/images/vehicles/sandcrawler.jpg'
+// TODO: reuse this for vehicle DetailPage
+const data = {
+  message: 'ok',
+  result: {
+    properties: {
+      model: 'Digger Crawler',
+      vehicle_class: 'wheeled',
+      manufacturer: 'Corellia Mining Corporation',
+      cost_in_credits: '150000',
+      length: '36.8 ',
+      crew: '46',
+      passengers: '30',
+      max_atmosphering_speed: '30',
+      cargo_capacity: '50000',
+      consumables: '2 months',
+      films: [],
+      pilots: [],
+      created: '2020-09-17T17:46:31.415Z',
+      edited: '2020-09-17T17:46:31.415Z',
+      name: 'Sand Crawler',
+      url: 'https://www.swapi.tech/api/vehicles/4',
+    },
+    description: 'A vehicle',
+    _id: '5f63a160cf50d100047f97fc',
+    uid: '4',
+    __v: 0,
+  },
+}
 
 const DetailPage = () => {
-  fetch('https://www.swapi.tech/api/planets/1/')
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err))
+  const params = useParams()
+  console.log(window.location.href)
+  console.log(params)
+
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState()
+
+  useEffect(() => {
+    setLoading(true)
+
+    fetch(`https://www.swapi.tech/api/planets/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .then(console.log('data', data))
+      .then(console.log('loaded'))
+
+      .then(setLoading(false))
+  }, [])
+
+  // useEffect(() => {
+  //   setdata()
+  // }, [setdata])
   return (
     <Layout>
       <div className='page'>
         <div className='detail_page'>
-          <div className='detail_page_top'>
+          {/* <div className='detail_page_top'>
             <div className='detail_page_top_left'>
               <div className='detail_page_top_left_card_detail'>
                 <img
@@ -29,25 +76,30 @@ const DetailPage = () => {
               </div>
               <div className='detail_page_top_right_bottom'>
                 <span className='detail_page_top_right_bottom_details'>
-                  Lorem, ipsum.
+                  <i>
+                    {data.properties.name}, {data.properties.model}.
+                  </i>
                 </span>
                 <span className='detail_page_top_right_bottom_details'>
-                  Lorem, ipsum.
+                  Crew capacity: {data.properties.crew}.
                 </span>
                 <span className='detail_page_top_right_bottom_details'>
-                  Lorem, ipsum.
+                  Passengers: {data.properties.passengers}.
                 </span>
                 <span className='detail_page_top_right_bottom_details'>
-                  Lorem, ipsum.
+                  Cargo capacity: {data.properties.cargo_capacity}.
                 </span>
                 <span className='detail_page_top_right_bottom_details'>
-                  Lorem, ipsum.
+                  Manufacturer: {data.properties.manufacturer}.
+                </span>
+                <span className='detail_page_top_right_bottom_details'>
+                  Cost in Credits: {data.properties.cost_in_credits}.
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className='detail_page_bottom'>
-            <button>back</button>
+            <button className='btn'>back</button>
           </div>
         </div>
       </div>

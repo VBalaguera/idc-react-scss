@@ -1,22 +1,27 @@
-// import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Layout from '../../Layout/Layout'
 
-import Card from '../../Card/Card'
-import Status from '../../Status/Status'
+import Card from '../../Cards/PlanetCard/PlanetCard'
+
+import { Link } from 'react-router-dom'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 
 const IndexPage = ({ title }) => {
-  // const [data, setData] = useState({})
-  // useEffect(() => {
-  //   const data = fetch('https://www.swapi.tech/api/planets/')
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((err) => console.error(err))
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState()
 
-  //   setData(data)
-  // }, [])
+  useEffect(() => {
+    setLoading(true)
+
+    fetch('https://www.swapi.tech/api/planets/')
+      .then((res) => res.json())
+      .then((data) => setData(data.results))
+      .then(console.log('loaded'))
+
+      .then(setLoading(false))
+  }, [])
 
   // fetch('https://www.swapi.tech/api/planets/1/')
   //   .then((res) => res.json())
@@ -30,6 +35,7 @@ const IndexPage = ({ title }) => {
   //   .then((res) => res.json())
   //   .then((data) => console.log(data))
   //   .catch((err) => console.error(err))
+
   return (
     <Layout>
       <div className='indexpage page'>
@@ -50,21 +56,22 @@ const IndexPage = ({ title }) => {
           </div>
           <div className='page_top_info'>{title}</div>
           <div className='page_top_options'>
-            <span>Search bar</span>
+            <span>Order by</span>
+            <span>Order by</span>
             <span>Order by</span>
           </div>
         </div>
         <div className='page_bottom'>
           {/* display page's api results */}
           <div className='page_bottom_items_container'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {/* data.results.map here */}
+
+            {data &&
+              data.map((item) => (
+                <Link to={`/planets/${item.uid}`}>
+                  <Card key={item.uid} planet={item} />
+                </Link>
+              ))}
           </div>
           <div className='page_bottom_pagination'>
             <div className='page_bottom_pagination_options'>

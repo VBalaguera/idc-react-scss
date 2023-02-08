@@ -2,8 +2,6 @@
 
 import Layout from '../../Layout/Layout'
 
-import Card from '../../Card/Card'
-
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 
 const PeoplePage = ({ title }) => {
@@ -61,16 +59,7 @@ const PeoplePage = ({ title }) => {
         </div>
         <div className='page_bottom'>
           {/* display page's api results */}
-          <div className='page_bottom_items_container'>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+          <div className='page_bottom_items_container'></div>
           <div className='page_bottom_pagination'>
             <div className='page_bottom_pagination_options'>
               Pagination options
