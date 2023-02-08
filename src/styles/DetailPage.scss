@@ -65,6 +65,8 @@
       flex-direction: column;
       justify-content: center;
 
+      border-radius: 1rem;
+
       @include medium {
         width: 100%;
       }
