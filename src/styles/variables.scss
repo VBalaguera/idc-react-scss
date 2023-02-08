@@ -12,6 +12,12 @@
   }
 }
 
+@mixin card-small-medium {
+  @media only screen and (max-width: 936px) {
+    @content;
+  }
+}
+
 @mixin medium {
   @media only screen and (max-width: 1024px) {
     @content;

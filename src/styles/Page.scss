@@ -7,7 +7,7 @@
 
   @include medium {
     padding-left: 0rem;
-    padding-top: 77px;
+    padding-top: 78px;
     width: 100vw;
   }
 
@@ -15,39 +15,97 @@
   flex-direction: column;
 
   .page_top {
-    background-color: red;
+    background-color: black;
 
     .page_top_title {
-      padding: 1rem;
+      padding: 0.5rem 1rem;
 
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      .page_top_title_text {
+        font-size: 2rem;
+        font-weight: bold;
+
+        @include medium {
+          font-size: 1.5rem;
+        }
+        @include small {
+          font-size: 1.1rem;
+        }
+        @include extrasmall {
+          font-size: 0.9rem;
+        }
+      }
+
+      .page_top_title_right {
+        display: flex;
+
+        align-items: center;
+
+        .page_top_title_right_status {
+          display: flex;
+          align-items: center;
+          margin-right: 0.5rem;
+
+          .page_top_title_right_status_text {
+            margin-right: 0.5rem;
+            font-weight: bold;
+            @include small {
+              display: none;
+            }
+          }
+        }
+
+        .page_top_title_right_login {
+          .page_top_title_right_login_img {
+            width: 30px;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
 
-    .page_top_title_right span {
-      margin-left: 1rem;
-    }
+    // .page_top_title_right span {
+    //   margin-left: 1rem;
+    // }
 
     .page_top_info {
-      padding: 1rem;
-      font-size: 1.2rem;
-      font-weight: bolder;
+      padding: 0.5rem 1rem;
+      font-size: 1.8rem;
+      font-weight: bold;
       text-transform: uppercase;
+      @include small {
+        font-size: 1.1rem;
+      }
+      @include extrasmall {
+        font-size: 0.9rem;
+      }
     }
 
     .page_top_options {
-      padding: 1rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+
+      @include small {
+        flex-direction: column;
+      }
     }
 
     .page_top_options span {
       margin-right: 1rem;
+
+      @include small {
+        margin: 0.2rem 0;
+      }
     }
   }
 
   .page_bottom {
-    background-color: orange;
-
     display: flex;
     flex-direction: column;
 
@@ -57,7 +115,6 @@
     .page_bottom_items_container {
       width: 100%;
       min-height: 800px;
-      background-color: red;
 
       display: flex;
       flex-wrap: wrap;
@@ -69,7 +126,8 @@
       width: 100%;
       height: 30px;
       padding: 1rem 0rem;
-      background-color: crimson;
+      border-top: 1px solid grey;
+      background-color: grey;
 
       display: flex;
       justify-content: center;

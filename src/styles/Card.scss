@@ -1,16 +1,16 @@
 .card_item {
   // aka card
-  width: 400px;
+  width: 375px;
   height: 420px;
-  border: 1px solid black;
-  margin: 0.5rem;
 
-  border-radius: 5px;
+  margin: 1rem;
 
   display: flex;
   flex-direction: column;
 
-  @include small {
+  border: 1px solid grey;
+
+  @include card-small-medium {
     width: 100%;
   }
 
@@ -29,7 +29,8 @@
   .card_item_bottom {
     height: 25%;
     padding: 0.5rem;
-    background-color: green;
+    border: none;
+    background-color: grey;
 
     display: flex;
     flex-direction: column;

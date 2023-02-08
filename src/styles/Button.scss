@@ -1,1 +1,40 @@
 // TODO: fill this
+.btn {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+
+  padding: 0.5rem 1rem;
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid grey;
+  color: white;
+  font-weight: bolder;
+
+  text-transform: uppercase;
+
+  &:hover {
+    cursor: pointer;
+    color: crimson;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+    background-color: crimson;
+    transform-origin: bottom right;
+    transition: all 0.25s ease-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}

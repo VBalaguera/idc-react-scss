@@ -1,6 +1,6 @@
 .detail_page {
   min-height: auto;
-  background-color: red;
+  background-color: black;
 
   display: flex;
   justify-content: space-between;
@@ -8,25 +8,21 @@
 
   padding: 1rem;
 
-  @include small {
-    flex-direction: column;
-  }
-
   .detail_page_top {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
 
-    @include small {
+    @include medium {
       flex-direction: column;
     }
     .detail_page_top_left {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45%;
+      width: 48%;
 
-      @include small {
+      @include medium {
         width: 100%;
       }
       .detail_page_top_left_card_detail {
@@ -44,11 +40,8 @@
 
         @include medium {
           height: 500px;
-          width: 350px;
-        }
-
-        @include small {
           width: 100%;
+          margin-bottom: 1rem;
         }
 
         .detail_page_top_left_card_detail_img {
@@ -60,19 +53,23 @@
     }
 
     .detail_page_top_right {
-      width: 50%;
+      width: 48%;
+
+      background-color: #c1c1c1;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      @include small {
+      @include medium {
         width: 100%;
       }
 
       .detail_page_top_right_top {
         .detail_page_top_right_top_title {
+          text-transform: uppercase;
           font-size: 2rem;
+          padding-left: 1rem;
 
           @include extralarge {
             font-size: 1.5rem;
@@ -85,6 +82,7 @@
 
         .detail_page_top_right_bottom_details {
           margin-bottom: 1rem;
+          padding-left: 1rem;
 
           font-size: 1.5rem;
 

@@ -1,10 +1,10 @@
 // import React, { useEffect, useState } from 'react'
 
-import Layout from '../Layout/Layout'
+import Layout from '../../Layout/Layout'
 
-import Card from '../Card/Card'
+import Card from '../../Card/Card'
 
-const IndexPage = () => {
+const VehiclesPage = () => {
   // const [data, setData] = useState({})
   // useEffect(() => {
   //   const data = fetch('https://www.swapi.tech/api/planets/')
@@ -69,4 +69,4 @@ const IndexPage = () => {
   )
 }
 
-export default IndexPage
+export default VehiclesPage
