@@ -41,9 +41,9 @@ const DetailPage = () => {
   const [info, setInfo] = useState(data.result)
   console.log(info)
 
-  useEffect(() => {
-    setInfo()
-  }, [setInfo])
+  // useEffect(() => {
+  //   setInfo()
+  // }, [setInfo])
   return (
     <Layout>
       <div className='page'>

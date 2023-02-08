@@ -19,6 +19,7 @@
 @import '../styles/Footer.scss';
 @import '../styles/Card.scss';
 @import '../styles/Button.scss';
+@import '../styles/Status.scss';
 
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap');
@@ -38,8 +39,8 @@
 
 body {
   margin: 0;
-  font-family: 'Aurebesh';
-  // font-family: 'Manrope', sans-serif, 'Helvetica Neue', sans-serif;
+  // font-family: 'Aurebesh';
+  font-family: 'Manrope', sans-serif, 'Helvetica Neue', sans-serif;
   // font-family: 'Roboto Mono', monospace, 'Helvetica Neue', sans-serif;
   // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -48,7 +49,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-color: black;
-  color: white;
+  color: #cecece;
 }
 
 a {

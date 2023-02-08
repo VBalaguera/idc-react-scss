@@ -2,7 +2,7 @@ import React from 'react'
 
 import IDCLOGO from '../../assets/images/pngegg.png'
 
-import PLANETEXAMPLE from '../../assets/icons/geonosis.svg'
+import PLANETEXAMPLE from '../../assets/icons/gloves_by_radiusss.svg'
 import VEHICLEEXAMPLE from '../../assets/icons/speeder_by_radiusss.svg'
 import STARSHIPEXAMPLE from '../../assets/icons/death_star.svg'
 import PEOPLEEXAMPLE from '../../assets/icons/darth_vader_by_radiusss.svg'
@@ -13,8 +13,8 @@ const Navbar = () => {
   return (
     <nav className='nav'>
       <div className='nav_logo'>
-        <img className='nav_logo_img' src={IDCLOGO} alt='IDC' />
         <Link to='/'>
+          <img className='nav_logo_img' src={IDCLOGO} alt='IDC' />
           <span className='nav_logo_text'>IDC</span>
         </Link>
       </div>

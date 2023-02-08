@@ -3,6 +3,7 @@
 import Layout from '../../Layout/Layout'
 
 import Card from '../../Card/Card'
+import Status from '../../Status/Status'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 
@@ -38,12 +39,6 @@ const IndexPage = ({ title }) => {
               Imperial Destroyers Center
             </span>
             <div className='page_top_title_right'>
-              <div className='page_top_title_right_status'>
-                <span className='page_top_title_right_status_text'>
-                  Empire DDBB Status:
-                </span>
-                <span className='page_top_title_right_status_light blink circle' />
-              </div>
               <div className='page_top_title_right_login'>
                 <img
                   className='page_top_title_right_login_img'

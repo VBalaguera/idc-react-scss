@@ -8,8 +8,8 @@
 
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid grey;
-  color: white;
+  border-bottom: 1px solid #cecece;
+  color: #cecece;
   font-weight: bolder;
 
   text-transform: uppercase;
@@ -24,13 +24,13 @@
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 1px;
+    height: 2px;
     bottom: 3px;
     left: 0;
     right: 0;
     background-color: crimson;
     transform-origin: bottom right;
-    transition: all 0.25s ease-out;
+    transition: transform 0.25s ease-out;
   }
 
   &:hover::after {

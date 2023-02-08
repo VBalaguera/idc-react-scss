@@ -1,0 +1,13 @@
+.status {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+
+  .status_text {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    @include small {
+      display: none;
+    }
+  }
+}
