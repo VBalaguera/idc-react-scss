@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
 
 import Layout from '../Layout/Layout'
 
 import Card from '../Card/Card'
 
 const IndexPage = () => {
-  const [data, setData] = useState({})
-  useEffect(() => {
-    const data = fetch('https://www.swapi.tech/api/planets/')
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err))
+  // const [data, setData] = useState({})
+  // useEffect(() => {
+  //   const data = fetch('https://www.swapi.tech/api/planets/')
+  //     .then((res) => res.json())
+  //     .then((data) => console.log(data))
+  //     .catch((err) => console.error(err))
 
-    setData(data)
-  }, [])
+  //   setData(data)
+  // }, [])
 
   // fetch('https://www.swapi.tech/api/planets/1/')
   //   .then((res) => res.json())
