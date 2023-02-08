@@ -6,11 +6,13 @@
 
 // page styles
 @import '../styles/Page.scss';
+@import '../styles/DetailPage.scss';
 
 // components
 @import '../styles/Navbar.scss';
 @import '../styles/Footer.scss';
 @import '../styles/Card.scss';
+@import '../styles/Button.scss';
 
 main {
   width: 100%;

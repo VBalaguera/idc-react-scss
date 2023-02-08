@@ -3,7 +3,9 @@
 .nav {
   position: absolute;
   left: 0;
-  height: 100vh;
+  // height: 100vh;
+  // works better this way
+
   width: 200px;
   border-right: 1px solid white;
   background-color: grey;
@@ -15,6 +17,21 @@
   align-items: center;
 
   padding: 1rem;
+
+  @include medium {
+    padding: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 98.5vw;
+    height: 60px;
+    border-right: none;
+    border-bottom: 1px solid white;
+  }
+
+  @include extrasmall {
+    padding: none;
+  }
 
   .nav_logo {
     display: flex;
@@ -73,13 +90,14 @@
       justify-content: flex-end;
       flex-direction: row;
 
-      padding: 1rem;
+      padding: 0rem;
     }
 
     .nav_options_menu {
       display: flex;
       flex-direction: column;
       align-items: center;
+
       background-color: orange;
 
       padding: 1rem 0.5rem;
@@ -90,15 +108,26 @@
 
       .nav_options_menu_item {
         padding: 0.5rem;
+        width: 100%;
 
         display: flex;
+        justify-content: flex-start;
         align-items: center;
 
+        transition: all 1s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          color: red;
+          // TODO: replace
+        }
+
         .nav_options_menu_item_icon {
+          width: 30px;
           margin-right: 0.7rem;
 
           @include medium {
             margin-right: 0.5rem;
+            width: 24px;
           }
           @include small {
             margin-right: 0.4rem;
@@ -106,11 +135,13 @@
         }
 
         .nav_options_menu_item_text {
+          text-transform: uppercase;
+          font-weight: bolder;
           @include medium {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
           }
           @include small {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
           }
           @include extrasmall {
             display: none;
@@ -119,20 +150,4 @@
       }
     }
   }
-
-  @include medium {
-    padding: 1rem;
-    flex-direction: row;
-    width: 100%;
-    height: 60px;
-    border-right: none;
-    border-bottom: 1px solid white;
-  }
-  //   in responsive,
-  //   .nav {
-  //   width: 100%;
-  //   height: 30px;
-  //   border-bottom: none;
-  //   border-right: 1px solid white;
-  //   }
 }
