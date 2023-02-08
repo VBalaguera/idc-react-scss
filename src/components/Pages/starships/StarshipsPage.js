@@ -13,6 +13,8 @@ const StarshipsPage = ({ title }) => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
 
+  const [highest, setHighest] = useState(false)
+
   // pagination from local json files
   // current page
   const [currentPage, setCurrentPage] = useState(1)
@@ -35,6 +37,18 @@ const StarshipsPage = ({ title }) => {
     setData(currentItems)
   }, [])
 
+  const orderByCargo = () => {
+    const starshipsByHighestCargo = items.results.sort(
+      (objA, objB) =>
+        Number(objB.properties.cargo_capacity) -
+        Number(objA.properties.cargo_capacity)
+    )
+
+    setData(starshipsByHighestCargo)
+    setHighest(true)
+    console.log('starshipsByCargo', starshipsByHighestCargo)
+  }
+
   return (
     <Layout>
       <div className='StarshipsPage page'>
@@ -55,7 +69,16 @@ const StarshipsPage = ({ title }) => {
           </div>
           <div className='page_top_info'>{title}</div>
           <div className='page_top_options'>
-            <span>Order by</span>
+            {highest ? (
+              <button className='btn' onClick={orderByCargo}>
+                Lowest Cargo Capacity
+              </button>
+            ) : (
+              <button className='btn' onClick={orderByCargo}>
+                Highest Cargo Capacity
+              </button>
+            )}
+
             <span>Order by</span>
             <span>Order by</span>
           </div>
