@@ -1,49 +1,49 @@
-// import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Layout from '../../Layout/Layout'
 
-import StarshipsCard from '../../Cards/StarshipsCard/StarshipsCard'
+import items from '../../../data/starships.json'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
+import Pagination from '../../Pagination/Pagination'
+import PlanetCard from '../../Cards/PlanetCard/PlanetCard'
+import StarshipsCard from '../../Cards/StarshipsCard/StarshipsCard'
 
-const StarshipPage = ({ title }) => {
-  // const [data, setData] = useState({})
-  // useEffect(() => {
-  //   const data = fetch('https://www.swapi.tech/api/planets/')
-  //     .then((res) => res.json())
-  //     .then((data) => console.log(data))
-  //     .catch((err) => console.error(err))
+const StarshipsPage = ({ title }) => {
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState(false)
 
-  //   setData(data)
-  // }, [])
+  // pagination from local json files
+  // current page
+  const [currentPage, setCurrentPage] = useState(1)
+  // items to display per page
+  const [itemsPerPage] = useState(4)
+  const indexLastItem = currentPage * itemsPerPage
+  const indexFirstItem = indexLastItem - itemsPerPage
+  const currentItems = items.results.slice(indexFirstItem, indexLastItem)
 
-  // fetch('https://www.swapi.tech/api/planets/1/')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
-  // fetch('https://www.swapi.tech/api/starships/2')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
-  // fetch('https://www.swapi.tech/api/vehicles/4/')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
+  console.log('currentItems', currentItems)
+
+  // calculate page number
+  const pageNumber = Math.ceil(items.results.length / itemsPerPage)
+
+  useEffect(() => {
+    // TODO:
+    // setLoading(true)
+    // use setTimeout for 1 second
+    // then setLoading(false)
+    setData(currentItems)
+  }, [])
+
   return (
     <Layout>
-      <div className='indexpage page'>
+      <div className='StarshipsPage page'>
         <div className='page_top'>
           <div className='page_top_title'>
             <span className='page_top_title_text'>
               Imperial Destroyers Center
             </span>
             <div className='page_top_title_right'>
-              <div className='page_top_title_right_status'>
-                <span className='page_top_title_right_status_text'>
-                  Empire DDBB Status:
-                </span>
-                <span className='page_top_title_right_status_light blink circle' />
-              </div>
               <div className='page_top_title_right_login'>
                 <img
                   className='page_top_title_right_login_img'
@@ -55,18 +55,28 @@ const StarshipPage = ({ title }) => {
           </div>
           <div className='page_top_info'>{title}</div>
           <div className='page_top_options'>
-            <span>Search bar</span>
+            <span>Order by</span>
+            <span>Order by</span>
             <span>Order by</span>
           </div>
         </div>
         <div className='page_bottom'>
           {/* display page's api results */}
           <div className='page_bottom_items_container'>
-            {/* StarshipsCard */}
+            {/* data.results.map here */}
+
+            {currentItems &&
+              currentItems.map((item) => (
+                <StarshipsCard key={item.uid} item={item} page='/starships' />
+              ))}
           </div>
           <div className='page_bottom_pagination'>
             <div className='page_bottom_pagination_options'>
-              Pagination options
+              <Pagination
+                pageNumber={pageNumber}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </div>
           </div>
         </div>
@@ -75,4 +85,4 @@ const StarshipPage = ({ title }) => {
   )
 }
 
-export default StarshipPage
+export default StarshipsPage

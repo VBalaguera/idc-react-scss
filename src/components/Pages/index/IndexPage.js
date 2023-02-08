@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Layout from '../../Layout/Layout'
 
-import Card from '../../Cards/PlanetCard/PlanetCard'
-
-import { Link } from 'react-router-dom'
-
-import planets from '../../../data/planets.json'
+import items from '../../../data/planets.json'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 import Pagination from '../../Pagination/Pagination'
@@ -14,7 +10,7 @@ import PlanetCard from '../../Cards/PlanetCard/PlanetCard'
 
 const IndexPage = ({ title }) => {
   const [data, setData] = useState()
-  const [loading, setLoading] = useState()
+  const [loading, setLoading] = useState(false)
 
   // pagination from local json files
   // current page
@@ -23,28 +19,20 @@ const IndexPage = ({ title }) => {
   const [itemsPerPage] = useState(4)
   const indexLastItem = currentPage * itemsPerPage
   const indexFirstItem = indexLastItem - itemsPerPage
-  const currentItems = planets.results.slice(indexFirstItem, indexLastItem)
+  const currentItems = items.results.slice(indexFirstItem, indexLastItem)
 
   console.log('currentItems', currentItems)
 
   // calculate page number
-  const pageNumber = Math.ceil(planets.results.length / itemsPerPage)
+  const pageNumber = Math.ceil(items.results.length / itemsPerPage)
 
   useEffect(() => {
+    // TODO:
+    // setLoading(true)
+    // use setTimeout for 1 second
+    // then setLoading(false)
     setData(currentItems)
   }, [])
-
-  // old code from using the api
-  // useEffect(() => {
-  //   setLoading(true)
-
-  //   fetch('https://www.swapi.tech/api/planets/')
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.results))
-  //     .then(console.log('loaded'))
-
-  //     .then(setLoading(false))
-  // }, [])
 
   return (
     <Layout>

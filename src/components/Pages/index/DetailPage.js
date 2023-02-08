@@ -1,53 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import Layout from '../Layout/Layout'
+import Layout from '../../Layout/Layout'
 
-import Loading from '../Loading/Loading'
+import Loading from '../../Loading/Loading'
 
-import planets from '../../data/planets.json'
-
-// TODO: clean this up, move it elsewhere
-import alderaan from '../../assets/images/planets/alderaan.jpg'
-import bespin from '../../assets/images/planets/bespin.png'
-import coruscant from '../../assets/images/planets/coruscant.png'
-import Dagobah from '../../assets/images/planets/Dagobah.jpg'
-import endor from '../../assets/images/planets/endor.png'
-import hoth from '../../assets/images/planets/hoth.png'
-import kamino from '../../assets/images/planets/kamino.jpg'
-import naboo from '../../assets/images/planets/naboo.png'
-import tatooine from '../../assets/images/planets/tatooine.png'
-import yaviniv from '../../assets/images/planets/yaviniv.png'
-
-import TESTICON from '../../assets/icons/death_star.svg'
-// TODO: reuse this for vehicle DetailPage
-// const data = {
-//   message: 'ok',
-//   result: {
-//     properties: {
-//       model: 'Digger Crawler',
-//       vehicle_class: 'wheeled',
-//       manufacturer: 'Corellia Mining Corporation',
-//       cost_in_credits: '150000',
-//       length: '36.8 ',
-//       crew: '46',
-//       passengers: '30',
-//       max_atmosphering_speed: '30',
-//       cargo_capacity: '50000',
-//       consumables: '2 months',
-//       films: [],
-//       pilots: [],
-//       created: '2020-09-17T17:46:31.415Z',
-//       edited: '2020-09-17T17:46:31.415Z',
-//       name: 'Sand Crawler',
-//       url: 'https://www.swapi.tech/api/vehicles/4',
-//     },
-//     description: 'A vehicle',
-//     _id: '5f63a160cf50d100047f97fc',
-//     uid: '4',
-//     __v: 0,
-//   },
-// }
+import planets from '../../../data/planets.json'
 
 const DetailPage = () => {
   const params = useParams()
@@ -55,60 +13,60 @@ const DetailPage = () => {
 
   const [data, setData] = useState('')
   const [loading, setLoading] = useState(true)
-  const [image, setImage] = useState('')
+  // const [image, setImage] = useState('')
 
   const currentPlanet = planets.results.filter(
     (planet) => planet.uid === params.id
   )
   console.log(currentPlanet[0])
 
-  useEffect(() => {
-    fetch(`https://www.swapi.tech/api/planets/${params.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('data', data.result)
-        console.log('uid', data.result.uid)
-        switch (data.uid) {
-          case '1':
-            console.log('1')
-            setImage('../../assets/images/planets/tatooine.png')
-            break
-          case '2':
-            setImage(alderaan)
-            break
-          case '3':
-            setImage(yaviniv)
-            break
-          case '4':
-            setImage(hoth)
-            break
-          case '5':
-            setImage(Dagobah)
-            break
-          case '6':
-            setImage(bespin)
-            break
-          case '7':
-            setImage(endor)
-            break
-          case '8':
-            setImage(naboo)
-            break
-          case '9':
-            setImage(coruscant)
-            break
-          case '10':
-            setImage(kamino)
-            break
-          default:
-            break
-        }
-        setData(data)
-        setLoading(false)
-        console.log('image', image)
-        console.log(coruscant)
-      })
-  }, [])
+  // useEffect(() => {
+  //   fetch(`https://www.swapi.tech/api/planets/${params.id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log('data', data.result)
+  //       console.log('uid', data.result.uid)
+  //       switch (data.uid) {
+  //         case '1':
+  //           console.log('1')
+  //           setImage('../../assets/images/planets/tatooine.png')
+  //           break
+  //         case '2':
+  //           setImage(alderaan)
+  //           break
+  //         case '3':
+  //           setImage(yaviniv)
+  //           break
+  //         case '4':
+  //           setImage(hoth)
+  //           break
+  //         case '5':
+  //           setImage(Dagobah)
+  //           break
+  //         case '6':
+  //           setImage(bespin)
+  //           break
+  //         case '7':
+  //           setImage(endor)
+  //           break
+  //         case '8':
+  //           setImage(naboo)
+  //           break
+  //         case '9':
+  //           setImage(coruscant)
+  //           break
+  //         case '10':
+  //           setImage(kamino)
+  //           break
+  //         default:
+  //           break
+  //       }
+  //       setData(data)
+  //       setLoading(false)
+  //       console.log('image', image)
+  //       console.log(coruscant)
+  //     })
+  // }, [])
 
   // useEffect(() => {
   //   setdata()
