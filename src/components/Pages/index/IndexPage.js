@@ -36,7 +36,7 @@ const IndexPage = ({ title }) => {
 
   return (
     <Layout>
-      <div className='indexpage page'>
+      <div className='indexpage page '>
         <div className='page_top'>
           <div className='page_top_title'>
             <span className='page_top_title_text'>
