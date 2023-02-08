@@ -5,6 +5,8 @@ import Layout from '../Layout/Layout'
 
 import Loading from '../Loading/Loading'
 
+import planets from '../../data/planets.json'
+
 // TODO: clean this up, move it elsewhere
 import alderaan from '../../assets/images/planets/alderaan.jpg'
 import bespin from '../../assets/images/planets/bespin.png'
@@ -55,6 +57,11 @@ const DetailPage = () => {
   const [loading, setLoading] = useState(true)
   const [image, setImage] = useState('')
 
+  const currentPlanet = planets.results.filter(
+    (planet) => planet.uid === params.id
+  )
+  console.log(currentPlanet[0])
+
   useEffect(() => {
     fetch(`https://www.swapi.tech/api/planets/${params.id}`)
       .then((res) => res.json())
@@ -64,7 +71,7 @@ const DetailPage = () => {
         switch (data.uid) {
           case '1':
             console.log('1')
-            setImage(tatooine)
+            setImage('../../assets/images/planets/tatooine.png')
             break
           case '2':
             setImage(alderaan)
@@ -118,38 +125,39 @@ const DetailPage = () => {
                 ) : (
                   <img
                     className='detail_page_top_left_card_detail_img'
-                    src={image}
+                    src={currentPlanet[0].properties.img}
                     alt=''
                   />
                 )}
               </div>
             </div>
-            {/* {!loading ? (
+            {!loading ? (
               <div className='detail_page_top_right'>
                 <div className='detail_page_top_right_top'>
                   <h2 className='detail_page_top_right_top_title'>
-                    {data.properties.name}
+                    {currentPlanet[0].properties.name}
                   </h2>
                 </div>
                 <div className='detail_page_top_right_bottom'>
                   <span className='detail_page_top_right_bottom_details'>
-                    <i>{data.description}</i>
+                    <i>{currentPlanet[0].description}</i>
                   </span>
                   <span className='detail_page_top_right_bottom_details'>
-                    Climate: {data.properties.climate} /{' '}
-                    {data.properties.terrain}.
+                    Climate: {currentPlanet[0].properties.climate} /{' '}
+                    {currentPlanet[0].properties.terrain}.
                   </span>
                   <span className='detail_page_top_right_bottom_details'>
-                    Population: {data.properties.population}.
+                    Population: {currentPlanet[0].properties.population}.
                   </span>
                   <span className='detail_page_top_right_bottom_details'>
-                    Diameter: {data.properties.diameter}.
+                    Diameter: {currentPlanet[0].properties.diameter}.
                   </span>
                   <span className='detail_page_top_right_bottom_details'>
-                    Orbital Period: {data.properties.orbital_period}.
+                    Orbital Period: {currentPlanet[0].properties.orbital_period}
+                    .
                   </span>
                   <span className='detail_page_top_right_bottom_details'>
-                    Gravity: {data.properties.gravity}.
+                    Gravity: {currentPlanet[0].properties.gravity}.
                   </span>
                 </div>
               </div>
@@ -157,7 +165,7 @@ const DetailPage = () => {
               <div className='detail_page_top_right'>
                 <Loading />
               </div>
-            )} */}
+            )}
           </div>
           <div className='detail_page_bottom'>
             <button className='btn'>back</button>

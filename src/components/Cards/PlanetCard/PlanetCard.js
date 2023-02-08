@@ -15,44 +15,8 @@ import naboo from '../../../assets/images/planets/naboo.png'
 import tatooine from '../../../assets/images/planets/tatooine.png'
 import yaviniv from '../../../assets/images/planets/yaviniv.png'
 
-const PlanetCard = ({ planet }) => {
-  console.log('planet', planet)
-  let imgsrc = ''
-  switch (planet.uid) {
-    case '1':
-      imgsrc = tatooine
-      break
-    case '2':
-      imgsrc = alderaan
-      break
-    case '3':
-      imgsrc = yaviniv
-      break
-    case '4':
-      imgsrc = hoth
-      break
-    case '5':
-      imgsrc = Dagobah
-      break
-    case '6':
-      imgsrc = bespin
-      break
-    case '7':
-      imgsrc = endor
-      break
-    case '8':
-      imgsrc = naboo
-      break
-    case '9':
-      imgsrc = coruscant
-      break
-    case '10':
-      imgsrc = kamino
-      break
-    default:
-      imgsrc = TESTICON
-  }
-  return <Card item={planet} imgsrc={imgsrc} />
+const PlanetCard = ({ planet, page }) => {
+  return <Card item={planet} imgsrc={planet.properties.img} page={page} />
 }
 
 export default PlanetCard

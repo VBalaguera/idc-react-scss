@@ -56,6 +56,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      .card_item_bottom_details_link {
+        transition: all 0.25s ease-out;
+        &:hover {
+          cursor: pointer;
+          color: red;
+          // TODO: replace
+        }
+      }
       .card_item_bottom_details_info {
         .card_item_bottom_details_info_icon {
           height: 30px;

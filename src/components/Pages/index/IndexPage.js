@@ -6,35 +6,45 @@ import Card from '../../Cards/PlanetCard/PlanetCard'
 
 import { Link } from 'react-router-dom'
 
+import planets from '../../../data/planets.json'
+
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
+import Pagination from '../../Pagination/Pagination'
+import PlanetCard from '../../Cards/PlanetCard/PlanetCard'
 
 const IndexPage = ({ title }) => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState()
 
+  // pagination from local json files
+  // current page
+  const [currentPage, setCurrentPage] = useState(1)
+  // items to display per page
+  const [itemsPerPage] = useState(4)
+  const indexLastItem = currentPage * itemsPerPage
+  const indexFirstItem = indexLastItem - itemsPerPage
+  const currentItems = planets.results.slice(indexFirstItem, indexLastItem)
+
+  console.log('currentItems', currentItems)
+
+  // calculate page number
+  const pageNumber = Math.ceil(planets.results.length / itemsPerPage)
+
   useEffect(() => {
-    setLoading(true)
-
-    fetch('https://www.swapi.tech/api/planets/')
-      .then((res) => res.json())
-      .then((data) => setData(data.results))
-      .then(console.log('loaded'))
-
-      .then(setLoading(false))
+    setData(currentItems)
   }, [])
 
-  // fetch('https://www.swapi.tech/api/planets/1/')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
-  // fetch('https://www.swapi.tech/api/starships/2')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
-  // fetch('https://www.swapi.tech/api/vehicles/4/')
-  //   .then((res) => res.json())
-  //   .then((data) => console.log(data))
-  //   .catch((err) => console.error(err))
+  // old code from using the api
+  // useEffect(() => {
+  //   setLoading(true)
+
+  //   fetch('https://www.swapi.tech/api/planets/')
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data.results))
+  //     .then(console.log('loaded'))
+
+  //     .then(setLoading(false))
+  // }, [])
 
   return (
     <Layout>
@@ -66,16 +76,18 @@ const IndexPage = ({ title }) => {
           <div className='page_bottom_items_container'>
             {/* data.results.map here */}
 
-            {data &&
-              data.map((item) => (
-                <Link to={`/planets/${item.uid}`}>
-                  <Card key={item.uid} planet={item} />
-                </Link>
+            {currentItems &&
+              currentItems.map((item) => (
+                <PlanetCard key={item.uid} planet={item} page='/planets' />
               ))}
           </div>
           <div className='page_bottom_pagination'>
             <div className='page_bottom_pagination_options'>
-              Pagination options
+              <Pagination
+                pageNumber={pageNumber}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </div>
           </div>
         </div>

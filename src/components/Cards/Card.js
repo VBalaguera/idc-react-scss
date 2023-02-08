@@ -1,9 +1,10 @@
 import React from 'react'
 
 import TESTICON from '../../assets/icons/death_star.svg'
+import { Link } from 'react-router-dom'
 
-const Card = ({ item, imgsrc }) => {
-  console.log('item', item)
+const Card = ({ item, imgsrc, page }) => {
+  //   console.log('item', item)
 
   return (
     <div className='card_item'>
@@ -15,10 +16,15 @@ const Card = ({ item, imgsrc }) => {
           <span>{item.name}</span>
         </div>
         <div className='card_item_bottom_description'>
-          <span>Description</span>
+          <span>{item.description}</span>
         </div>
         <div className='card_item_bottom_details'>
-          <span>Details</span>
+          <Link
+            className='card_item_bottom_details_link'
+            to={`${page}/${item.uid}`}
+          >
+            More information
+          </Link>
           <div className='card_item_bottom_details_info'>
             <img
               className='card_item_bottom_details_info_icon'
