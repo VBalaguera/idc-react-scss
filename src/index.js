@@ -1,14 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import './styles/index.scss'
 
 import { createRoot } from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import IndexPage from './components/Pages/IndexPage'
 import DetailPage from './components/Pages/DetailPage'

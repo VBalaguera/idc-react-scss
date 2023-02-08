@@ -8,7 +8,7 @@ const Card = () => {
   return (
     <div className='card_item'>
       <div className='card_item_top'>
-        <img className='card_item_top_img' src={TESTIMAGE} />
+        <img className='card_item_top_img' src={TESTIMAGE} alt='test' />
       </div>
       <div className='card_item_bottom'>
         <div className='card_item_bottom_title'>
@@ -23,14 +23,17 @@ const Card = () => {
             <img
               className='card_item_bottom_details_info_icon'
               src={TESTICON}
+              alt='test'
             />
             <img
               className='card_item_bottom_details_info_icon'
               src={TESTICON}
+              alt='test'
             />
             <img
               className='card_item_bottom_details_info_icon'
               src={TESTICON}
+              alt='test'
             />
           </div>
         </div>
