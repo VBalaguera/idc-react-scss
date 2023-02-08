@@ -1,5 +1,8 @@
 {
   "name": "idc-react-scss",
+  "short-name": "idc",
+  "description": "Imperial Command Center",
+  "author": "Víctor Balaguera",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
