@@ -2,8 +2,22 @@ import React from 'react'
 
 import Layout from '../Layout/Layout'
 
+import Card from '../Card/Card'
+
 const IndexPage = () => {
   fetch('https://www.swapi.tech/api/planets/')
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err))
+  fetch('https://www.swapi.tech/api/planets/1/')
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err))
+  fetch('https://www.swapi.tech/api/starships/2')
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err))
+  fetch('https://www.swapi.tech/api/vehicles/4/')
     .then((res) => res.json())
     .then((data) => console.log(data))
     .catch((err) => console.error(err))
@@ -30,16 +44,14 @@ const IndexPage = () => {
           <div className='page_bottom'>
             {/* display page's api results */}
             <div className='page_bottom_items_container'>
-              <div className='page_bottom_items_container_item'>1</div>
-              <div className='page_bottom_items_container_item'>2</div>
-              <div className='page_bottom_items_container_item'>3</div>
-              <div className='page_bottom_items_container_item'>4</div>
-              <div className='page_bottom_items_container_item'>5</div>
-              <div className='page_bottom_items_container_item'>6</div>
-              <div className='page_bottom_items_container_item'>7</div>
-              <div className='page_bottom_items_container_item'>8</div>
-              <div className='page_bottom_items_container_item'>9</div>
-              <div className='page_bottom_items_container_item'>10</div>
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
+              <Card />
             </div>
             <div className='page_bottom_pagination'>
               <div className='page_bottom_pagination_options'>

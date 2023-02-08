@@ -10,9 +10,11 @@
 // components
 @import '../styles/Navbar.scss';
 @import '../styles/Footer.scss';
+@import '../styles/Card.scss';
 
 main {
   width: 100%;
+  min-height: 100vh;
 }
 
 body {

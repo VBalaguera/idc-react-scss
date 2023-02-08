@@ -3,13 +3,14 @@
 .page2 {
   padding: 1rem;
   width: auto;
-  min-height: 1048px;
+  height: auto;
   background-color: green;
 }
 
 .page {
   width: calc(100% - 232px);
-  height: 100vh;
+  min-height: 100vh;
+
   padding-left: 232px;
   margin-bottom: 1rem;
 
@@ -68,13 +69,6 @@
       flex-wrap: wrap;
 
       justify-content: space-between;
-      .page_bottom_items_container_item {
-        // aka card
-        width: 300px;
-        height: 200px;
-        border: 1px solid black;
-        margin: 1rem;
-      }
     }
 
     .page_bottom_pagination {
