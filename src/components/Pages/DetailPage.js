@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Layout from '../Layout/Layout'
 
@@ -40,6 +40,10 @@ const DetailPage = () => {
 
   const [info, setInfo] = useState(data.result)
   console.log(info)
+
+  useEffect(() => {
+    setInfo()
+  }, [setInfo])
   return (
     <Layout>
       <div className='page'>
