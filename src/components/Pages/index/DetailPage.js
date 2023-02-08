@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Layout from '../../Layout/Layout'
 
@@ -9,7 +10,7 @@ import planets from '../../../data/planets.json'
 
 const DetailPage = () => {
   const params = useParams()
-  console.log(params.id)
+  const navigate = useNavigate()
 
   const [data, setData] = useState('')
   const [loading, setLoading] = useState(true)
@@ -20,57 +21,6 @@ const DetailPage = () => {
   )
   console.log(currentPlanet[0])
 
-  // useEffect(() => {
-  //   fetch(`https://www.swapi.tech/api/planets/${params.id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log('data', data.result)
-  //       console.log('uid', data.result.uid)
-  //       switch (data.uid) {
-  //         case '1':
-  //           console.log('1')
-  //           setImage('../../assets/images/planets/tatooine.png')
-  //           break
-  //         case '2':
-  //           setImage(alderaan)
-  //           break
-  //         case '3':
-  //           setImage(yaviniv)
-  //           break
-  //         case '4':
-  //           setImage(hoth)
-  //           break
-  //         case '5':
-  //           setImage(Dagobah)
-  //           break
-  //         case '6':
-  //           setImage(bespin)
-  //           break
-  //         case '7':
-  //           setImage(endor)
-  //           break
-  //         case '8':
-  //           setImage(naboo)
-  //           break
-  //         case '9':
-  //           setImage(coruscant)
-  //           break
-  //         case '10':
-  //           setImage(kamino)
-  //           break
-  //         default:
-  //           break
-  //       }
-  //       setData(data)
-  //       setLoading(false)
-  //       console.log('image', image)
-  //       console.log(coruscant)
-  //     })
-  // }, [])
-
-  // useEffect(() => {
-  //   setdata()
-  // }, [setdata])
   return (
     <Layout>
       <div className='page'>
@@ -91,9 +41,13 @@ const DetailPage = () => {
             </div>
             {!loading ? (
               <div className='detail_page_top_right'>
+                <Loading />
+              </div>
+            ) : (
+              <div className='detail_page_top_right'>
                 <div className='detail_page_top_right_top'>
                   <h2 className='detail_page_top_right_top_title'>
-                    {currentPlanet[0].properties.name}
+                    {currentPlanet[0].name}
                   </h2>
                 </div>
                 <div className='detail_page_top_right_bottom'>
@@ -119,14 +73,12 @@ const DetailPage = () => {
                   </span>
                 </div>
               </div>
-            ) : (
-              <div className='detail_page_top_right'>
-                <Loading />
-              </div>
             )}
           </div>
           <div className='detail_page_bottom'>
-            <button className='btn'>back</button>
+            <button onClick={() => navigate(-1)} className='btn'>
+              back
+            </button>
           </div>
         </div>
       </div>
