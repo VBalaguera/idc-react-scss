@@ -13,6 +13,9 @@ import VehiclesPage from './components/Pages/vehicles/VehiclesPage'
 
 import StarshipsPage from './components/Pages/starships/StarshipsPage'
 
+// aurebesh font
+import './fonts/Aurebesh/Aurebesh.ttf'
+
 const router = createBrowserRouter([
   {
     path: '/',
