@@ -39,14 +39,16 @@
     url('../fonts/Aurebesh/Aurebesh.ttf') format('truetype');
 }
 
+* {
+  font-family: 'Aurebesh', 'Helvetica Neue', sans-serif;
+  // placing fonts here avoids not applying them
+  // to elements such as buttons
+  // TODO: look up further information about this
+}
 body {
   margin: 0;
-  font-family: 'Aurebesh', 'Helvetica Neue', sans-serif;
+  // font-family: 'Aurebesh', 'Helvetica Neue', sans-serif;
   // font-family: 'Manrope', sans-serif, 'Helvetica Neue', sans-serif;
-  // font-family: 'Roboto Mono', monospace, 'Helvetica Neue', sans-serif;
-  // font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  //   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  //   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
