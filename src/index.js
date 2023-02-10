@@ -27,10 +27,10 @@ const router = createBrowserRouter([
     path: '/planets/:id',
     element: <DetailPage />,
   },
-  {
-    path: '/people',
-    element: <PeoplePage title='people' />,
-  },
+  // {
+  //   path: '/people',
+  //   element: <PeoplePage title='people' />,
+  // },
   {
     path: '/starships',
     element: <StarshipsPage title='Starships' />,

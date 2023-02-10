@@ -51,7 +51,8 @@ const Navbar = () => {
               <span className='nav_options_menu_item_text'>Vehicles</span>
             </Link>{' '}
           </div>
-          <div className='nav_options_menu_item'>
+          {/* TODO: include new People's pages */}
+          {/* <div className='nav_options_menu_item'>
             <Link to='/people'>
               {' '}
               <img
@@ -61,7 +62,7 @@ const Navbar = () => {
               />
               <span className='nav_options_menu_item_text'>People</span>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* TODO: include additional information here? */}

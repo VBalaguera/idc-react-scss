@@ -6,14 +6,15 @@ import items from '../../../data/starships.json'
 
 import STORMTROPPERICON from '../../../assets/icons/stormtrooper.svg'
 import Pagination from '../../Pagination/Pagination'
-import PlanetCard from '../../Cards/PlanetCard/PlanetCard'
+
 import StarshipsCard from '../../Cards/StarshipsCard/StarshipsCard'
 
 const StarshipsPage = ({ title }) => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
 
-  const [highest, setHighest] = useState(false)
+  const [highestCargo, setHighestCargo] = useState(false)
+  const [highestCrew, setHighestCrew] = useState(false)
 
   // pagination from local json files
   // current page
@@ -37,7 +38,8 @@ const StarshipsPage = ({ title }) => {
     setData(currentItems)
   }, [])
 
-  const orderByCargo = () => {
+  // order by cargo
+  const orderByHighestCargo = () => {
     const starshipsByHighestCargo = items.results.sort(
       (objA, objB) =>
         Number(objB.properties.cargo_capacity) -
@@ -45,8 +47,56 @@ const StarshipsPage = ({ title }) => {
     )
 
     setData(starshipsByHighestCargo)
-    setHighest(true)
+    setHighestCargo(true)
     console.log('starshipsByCargo', starshipsByHighestCargo)
+  }
+  const orderByLowestCargo = () => {
+    const starshipsByLowestCargo = items.results.sort(
+      (objA, objB) =>
+        Number(objA.properties.cargo_capacity) -
+        Number(objB.properties.cargo_capacity)
+    )
+
+    setData(starshipsByLowestCargo)
+    setHighestCargo(false)
+    console.log('starshipsByCargo', starshipsByLowestCargo)
+  }
+
+  // order by crew
+
+  const orderByHighestCrew = () => {
+    const starshipsByHighestCrew = items.results.sort(
+      (objA, objB) =>
+        Number(objB.properties.crew) - Number(objA.properties.crew)
+    )
+
+    setData(starshipsByHighestCrew)
+    setHighestCrew(true)
+    console.log('starshipsByCrew', starshipsByHighestCrew)
+  }
+  const orderByLowestCrew = () => {
+    const starshipsByLowestCrew = items.results.sort(
+      (objA, objB) =>
+        Number(objA.properties.crew) - Number(objB.properties.crew)
+    )
+
+    setData(starshipsByLowestCrew)
+    setHighestCrew(false)
+    console.log('starshipsByCrew', starshipsByLowestCrew)
+  }
+
+  // reset order
+  // TODO: test this method
+  const resetOrder = () => {
+    // display elements by uid
+    const starships = items.results.sort(
+      (objB, objA) => Number(objB.uid) - Number(objA.uid)
+    )
+
+    setData(starships)
+    setHighestCrew(false)
+    setHighestCargo(false)
+    console.log('starships', starships)
   }
 
   return (
@@ -68,19 +118,34 @@ const StarshipsPage = ({ title }) => {
             </div>
           </div>
           <div className='page_top_info'>{title}</div>
+          {/* order by options here */}
           <div className='page_top_options'>
-            {highest ? (
-              <button className='btn' onClick={orderByCargo}>
+            {/* highest/lowest cargo */}
+            {highestCargo ? (
+              <button className='btn' onClick={orderByLowestCargo}>
                 Lowest Cargo Capacity
               </button>
             ) : (
-              <button className='btn' onClick={orderByCargo}>
+              <button className='btn' onClick={orderByHighestCargo}>
                 Highest Cargo Capacity
               </button>
             )}
 
-            <span>Order by</span>
-            <span>Order by</span>
+            {/* highest/lowest crew */}
+            {highestCrew ? (
+              <button className='btn' onClick={orderByLowestCrew}>
+                Lowest Crew Capacity
+              </button>
+            ) : (
+              <button className='btn' onClick={orderByHighestCrew}>
+                Highest Crew Capacity
+              </button>
+            )}
+
+            {/* TODO: test and implement this */}
+            {/* <button className='btn' onClick={resetOrder}>
+              Reset
+            </button> */}
           </div>
         </div>
         <div className='page_bottom'>

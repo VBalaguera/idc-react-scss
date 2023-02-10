@@ -12,6 +12,9 @@ const IndexPage = ({ title }) => {
   const [data, setData] = useState()
   const [loading, setLoading] = useState(false)
 
+  const [highestPopulation, setHighestPopulation] = useState(false)
+  const [highestDiameter, setHighestDiameter] = useState(false)
+
   // pagination from local json files
   // current page
   const [currentPage, setCurrentPage] = useState(1)
@@ -34,6 +37,51 @@ const IndexPage = ({ title }) => {
     setData(currentItems)
   }, [])
 
+  // order by cargo
+  const orderByHighestPopulation = () => {
+    const planetsByhighestPopulation = items.results.sort(
+      (objA, objB) =>
+        Number(objB.properties.population) - Number(objA.properties.population)
+    )
+
+    setData(planetsByhighestPopulation)
+    setHighestPopulation(true)
+    console.log('planetsByPopulation', planetsByhighestPopulation)
+  }
+  const orderByLowestPopulation = () => {
+    const planetsByLowestPopulation = items.results.sort(
+      (objA, objB) =>
+        Number(objA.properties.population) - Number(objB.properties.population)
+    )
+
+    setData(planetsByLowestPopulation)
+    setHighestPopulation(false)
+    console.log('planetsByPopulation', planetsByLowestPopulation)
+  }
+
+  // order by crew
+
+  const orderByHighestDiameter = () => {
+    const planetsByhighestDiameter = items.results.sort(
+      (objA, objB) =>
+        Number(objB.properties.diameter) - Number(objA.properties.diameter)
+    )
+
+    setData(planetsByhighestDiameter)
+    setHighestDiameter(true)
+    console.log('planetsByDiameter', planetsByhighestDiameter)
+  }
+  const orderByLowestDiameter = () => {
+    const planetsByLowestDiameter = items.results.sort(
+      (objA, objB) =>
+        Number(objA.properties.diameter) - Number(objB.properties.diameter)
+    )
+
+    setData(planetsByLowestDiameter)
+    setHighestDiameter(false)
+    console.log('planetsByDiameter', planetsByLowestDiameter)
+  }
+
   return (
     <Layout>
       <div className='indexpage page '>
@@ -54,9 +102,26 @@ const IndexPage = ({ title }) => {
           </div>
           <div className='page_top_info'>{title}</div>
           <div className='page_top_options'>
-            <span>Order by</span>
-            <span>Order by</span>
-            <span>Order by</span>
+            {highestPopulation ? (
+              <button className='btn' onClick={orderByLowestPopulation}>
+                Lowest Population
+              </button>
+            ) : (
+              <button className='btn' onClick={orderByHighestPopulation}>
+                Highest Population
+              </button>
+            )}
+
+            {/* highest/lowest crew */}
+            {highestDiameter ? (
+              <button className='btn' onClick={orderByLowestDiameter}>
+                Lowest Diameter
+              </button>
+            ) : (
+              <button className='btn' onClick={orderByHighestDiameter}>
+                Highest Diameter
+              </button>
+            )}
           </div>
         </div>
         <div className='page_bottom'>
